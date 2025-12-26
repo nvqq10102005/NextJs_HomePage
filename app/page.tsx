@@ -1,8 +1,38 @@
 import Image from "next/image";
 import Header from "./components/app.header";
 import GradientBadge from "@/components/ui/gradient-badge";
-import { ChevronRight, CircleCheck, Play } from 'lucide-react';
+import { ChevronRight, CircleCheck, LucideIcon, Music, Play, Tag, HeadPhone, Headset, FileText } from 'lucide-react';
 
+
+interface StorageItemProps {
+  icon: LucideIcon; // Nhận vào một Icon component
+  title: string;
+  value: string;
+  color: string; // Màu chủ đạo (dùng cho cả nền icon và thanh progress)
+}
+
+const StorageItem = ({ icon: Icon, title, value, color }: StorageItemProps) => (
+  <div className="flex flex-col gap-1 mb-3">
+    <div className="flex justify-between items-center text-xs text-white mb-1">
+      <div className="flex items-center gap-2">
+
+        {/* Container chứa Icon */}
+        <div className={`w-6 h-6 rounded-[6px] ${color} flex items-center justify-center`}>
+          {/* Render Icon được truyền vào, chỉnh màu text cho tương phản */}
+          <Icon size={14} className="text-white mix-blend-overlay" />
+        </div>
+
+        <span className="text-gray-300">{title}</span>
+      </div>
+      <span className="text-gray-500 font-medium">{value}</span>
+    </div>
+
+    {/* Progress Bar */}
+    <div className="w-full h-1.5 bg-[#1B2A41] rounded-full overflow-hidden">
+      <div className={`h-full rounded-full ${color}`} style={{ width: '60%' }}></div>
+    </div>
+  </div>
+);
 
 export default function Home() {
   return (
@@ -10,7 +40,7 @@ export default function Home() {
       <Header />
       <section className=" h-[10000px] items-start justify-center bg-[#0A0F17] font-sans dark:bg-black">
         <div className="w-[94%] h-[1135px] mx-auto flex bg-gradient-to-b from-[#080C11] to-[#1B2A41] rounded-b-2xl overflow-hidden">
-          <div className="bg-[url('/fb2644cb797bc91f36521e09b8f74036a7581f80.png')] w-full h-[890px] object-cover bg-no-repeat bg-center px-5 bg-cover">
+          <div className="bg-[url('/fb2644cb797bc91f36521e09b8f74036a7581f80.png')] w-full h-[890px] object-cover bg-no-repeat  bg-center px-5 bg-cover">
             <div className="flex flex-col justify-center items-center gap-1 space-y-6 text-center pt-24">
               <GradientBadge text="Easy Task Management" />
               <p className="text-[60px] font-bold tracking-normal font-urbanist">Master Your Tasks, Achieve <br /><span className="text-[#FF9F1C]">More Every Day</span> </p>
@@ -24,7 +54,7 @@ export default function Home() {
 
             {/* // Dashboard Image */}
             <div className="relative w-full flex justify-center mt-22">
-              <div className="relative w-full max-w-[1220px] aspect-[16/9]">
+              <div className="relative w-full max-w-[1220px] aspect-[16/9] rounded-2xl bg-[url('/2267e70af74c31f726fbc431473db12e605052a2 (1).png')] bg-center bg-cover">
 
                 {/* DASHBOARD WRAPPER - MỐC CHUẨN */}
                 <div
@@ -379,6 +409,170 @@ export default function Home() {
 
           {/* Divider line */}
           <div className="h-px w-full bg-[#FFFFFF2B] mt-12 md:mt-18"></div>
+        </section>
+
+        <section className="relative w-[94%] md:w-[72%] mx-auto mt-10 md:mt-20 mb-20">
+
+          {/* --- DECORATION (Giữ nguyên absolute) --- */}
+          <div className="absolute -top-60 -left-60 z-0 pointer-events-none">
+            <img src="/Union.svg" alt="Decor" className="object-cover opacity-50" />
+          </div>
+
+          {/* --- MAIN GRID CONTAINER --- */}
+          {/* 
+          - grid-cols-1: Mobile 1 cột
+          - md:grid-cols-2: PC 2 cột
+          - gap-6: Khoảng cách đều giữa tất cả các phần tử (thay thế cho mt-4, mt-10...)
+      */}
+          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            {/* 1. HEADER SECTION (Chiếm hết 2 cột) */}
+            <div className="col-span-1 md:col-span-2 flex flex-col items-center text-center">
+              <GradientBadge text="How it Works" />
+              <div className="mt-4">
+                <h2 className="font-semibold text-white leading-tight" style={{ fontSize: 'clamp(2rem, 2.5vw, 3.5rem)' }}>
+                  The Benefits of Smarter
+                </h2>
+                <h2 className="font-semibold text-[#FF9F1C] leading-tight" style={{ fontSize: 'clamp(2rem, 2.5vw, 3.5rem)' }}>
+                  Task Management
+                </h2>
+              </div>
+            </div>
+
+            {/* 2. BANNER IMAGE (Chiếm hết 2 cột) */}
+            <div className="col-span-1 md:col-span-2 relative w-full rounded-[30px] md:rounded-[50px] overflow-hidden border border-[#1B2A41] aspect-[16/9] md:aspect-[21/9]">
+              {/* Ảnh nền */}
+              <img
+                src="/2267e70af74c31f726fbc431473db12e605052a2 (1).png"
+                alt="Background"
+                className="grayscale object-cover w-full h-full"
+              />
+
+              {/* Layer trang trí vector */}
+              <img
+                src="/Vector 1 (Stroke).svg"
+                alt="vector"
+                className="absolute left-0 bottom-0 w-full object-cover opacity-60"
+              />
+
+              {/* Icon giữa */}
+              <img
+                src="/SocialIcon.svg"
+                alt="Social Icon"
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[80%] w-16 md:w-auto"
+              />
+
+              {/* Text & Button dưới đáy */}
+              <div className="absolute bottom-8 md:bottom-12 left-0 right-0 text-center px-4">
+                <p className="text-white text-sm md:text-lg mb-4 font-medium">See how our platform helps you go from idea to campaign</p>
+                <button className="border border-[#F6D6AC] bg-gradient-to-r from-[#FF9F1C] to-[#FFB249] py-2 px-6 rounded-full font-bold text-white text-sm md:text-base inline-flex items-center gap-1 hover:opacity-90 transition-opacity">
+                  See All Integrations <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
+                </button>
+              </div>
+            </div>
+
+            {/* 3. BOTTOM CARDS (Tự động chia cột) */}
+
+            {/* Card Trái */}
+            <div className="bg-[#0A0F17] border border-[#1B2A41] rounded-[30px] p-8 flex flex-col relative overflow-hidden group">
+
+              {/* Text Header */}
+              <div className="mb-8 z-10">
+                <h3 className="font-semibold text-white mb-3 text-xl md:text-2xl">Flexible & Scalable</h3>
+                <p className="font-normal text-gray-400 text-sm leading-relaxed max-w-xs">
+                  Assign responsibilities, set deadlines, track progress, and keep everything organized.
+                </p>
+              </div>
+
+              {/* --- VISUALIZATION AREA --- */}
+              <div className="relative mt-4 h-[250px] w-full flex items-end justify-center">
+
+                {/* 1. LABEL CARD (Nằm dưới, bên trái) */}
+                <div className="absolute left-0 bottom-0 w-[60%] bg-[#121826] border border-[#1B2A41] rounded-xl p-4 pb-4 z-0">
+                  <p className="text-white font-medium mb-3">Labels</p>
+                  <div className="space-y-8 ">
+                    {['Copywriting', 'UI Design', 'Illustrations'].map((label, i) => (
+                      <div key={i} className="flex items-center gap-2 text-gray-300 text-sm">
+                        <Tag className="size-4 text-[#8C8F94]" />
+                        <span>{label}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 2. STORAGE CARD (Nằm đè lên, bên phải) */}
+                <div className="absolute right-[-20px] bottom-[-20px] w-[65%] bg-[#0F1420] border border-[#1B2A41] rounded-tl-2xl rounded-br-[30px] p-5 shadow-2xl shadow-black/50 z-10">
+
+                  {/* Circle Chart Header */}
+                  <div className="flex items-center gap-4 mb-6">
+                    {/* Vòng tròn 58% */}
+                    <div className="relative size-12 flex items-center justify-center">
+                      <svg className="size-full -rotate-90" viewBox="0 0 36 36">
+                        <path className="text-[#1B2A41]" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeWidth="4" />
+                        <path className="text-[#3B82F6]" strokeDasharray="58, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeWidth="4" />
+                      </svg>
+                      <span className="absolute text-[10px] font-bold text-white">58%</span>
+                    </div>
+
+                    {/* Text Info */}
+                    <div>
+                      <p className="text-white text-xs font-semibold">Available Storage</p>
+                      <p className="text-gray-500 text-[10px]">130GB / 512GB</p>
+                    </div>
+                  </div>
+
+                  {/* List Progress Bars */}
+                  <div className="space-y-2">
+                    <StorageItem
+                      icon={Headset}
+                      title="Media"
+                      value="86GB"
+                      color="bg-[#2ECA8B]"
+                    />
+
+                    {/* Item 2: Documents (Dùng icon FileText, màu vàng) */}
+                    <StorageItem
+                      icon={FileText}
+                      title="Documents"
+                      value="86GB"
+                      color="bg-[#FF9F1C]"
+                    />
+
+                    {/* Item 3: Music (Dùng icon Music, màu đỏ) */}
+                    <StorageItem
+                      icon={Music}
+                      title="Music"
+                      value="86GB"
+                      color="bg-[#EF4444]"
+                    />
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+            {/* Card Phải */}
+            <div className="bg-[url('/26e3d0c0ed7d28ce72a7f39997424ed85cc69ef2.png')] bg-cover bg-center border border-[#1B2A41] rounded-[30px] p-6 md:p-8 min-h-[200px] relative overflow-hidden group">
+              <div className="w-full h-full absolute inset-0 bg-gradient-to-t from-[#2196F300] to-transparent z-10"></div>
+              <div className="flex flex-col justify-between gap-8">
+
+                <div className="flex flex-col justify-between items-start">
+                  <p className="text-left font-semibold" style={{ fontSize: 'clamp(1.6rem, 1vw, 2.6rem)' }}>Powerful Features to <br /> Simplify Your Work <br /> Every Day</p>
+
+                </div>
+
+                <div className="flex flex-col justify-between items-start gap-8">
+                  <p>Optimise your daily tasks with a smart feature system that helps you work faster and more efficiently.</p>
+                  <button className="mt-4 border border-[#F6D6AC] bg-gradient-to-r from-[#FF9F1C] to-[#FFB249] py-2 px-6 rounded-full font-bold text-white text-sm md:text-base inline-flex items-center gap-1 hover:opacity-90 transition-opacity">
+                    Learn More <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
         </section>
       </section>
     </>
