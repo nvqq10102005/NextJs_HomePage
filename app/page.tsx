@@ -102,7 +102,7 @@ const TestimonialCard = ({ item }: { item: (typeof TESTIMONIALS)[0] }) => {
       </div>
 
       {/* Body Text */}
-      <p className="text-gray-400 text-sm leading-relaxed line-clamp-3 border-t border-[#1B2A41]">
+      <p className="text-white text-sm leading-relaxed line-clamp-3 border-t border-[#1B2A41]">
         {item.content}
       </p>
     </div>
@@ -306,7 +306,7 @@ export default function Home() {
     <>
       <Header />
       <section className=" h-fit items-start justify-center bg-[#0A0F17] font-sans dark:bg-black">
-        <div className="w-[94%] mx-auto md:h-[1118px] flex bg-gradient-to-b from-[#080C11] to-[#1B2A41] rounded-b-2xl overflow-hidden">
+        <div className="w-[94%] mx-auto md:h-[1138px] flex bg-gradient-to-b from-[#080C11] to-[#1B2A41] rounded-b-2xl overflow-hidden">
           <div className="bg-[url('/fb2644cb797bc91f36521e09b8f74036a7581f80.png')] w-full h-[890px] object-cover bg-no-repeat  bg-center px-5 bg-cover">
             {/* CONTENT CHÍNH */}
             {/* Thêm 'relative w-full' vào thẻ bao ngoài này để làm mốc tọa độ */}
