@@ -224,7 +224,7 @@ const PRICING_DATA = [
       { name: "CRM Integration", isActive: false }, // Cái này sẽ mờ
       { name: "Free Support", isActive: false }, // Cái này sẽ mờ
       { name: "Unlimited Projects", isActive: true },
-      { name: "Real-Time Collaboration", isActive: true },
+      { name: "Real-Time Collaboration", isActive: false },
       { name: "Recurring Tasks", isActive: false },
       { name: "Custom Workflows", isActive: false },
     ],
@@ -306,7 +306,7 @@ export default function Home() {
     <>
       <Header />
       <section className=" h-fit items-start justify-center bg-[#0A0F17] font-sans dark:bg-black">
-        <div className="w-[94%] mx-auto md:h-[1138px] flex bg-gradient-to-b from-[#080C11] to-[#1B2A41] rounded-b-2xl overflow-hidden">
+        <div className="w-[94%] mx-auto md:h-[1138px] flex bg-gradient-to-b from-[#080C11] to-[#1B2A41] rounded-b-[30px] overflow-hidden">
           <div className="bg-[url('/fb2644cb797bc91f36521e09b8f74036a7581f80.png')] w-full h-[890px] object-cover bg-no-repeat  bg-center px-5 bg-cover">
             {/* CONTENT CHÍNH */}
             {/* Thêm 'relative w-full' vào thẻ bao ngoài này để làm mốc tọa độ */}
