@@ -1520,7 +1520,9 @@ export default function Home() {
                       <h3 className="text-2xl font-bold text-white mb-6">
                         Support Request
                       </h3>
-                      <form className="space-y-4">
+                      <form onReset={() => {
+                        alert("H")
+                      }} className="space-y-4">
                         <div className="grid grid-cols-2 gap-4">
                           <div className="space-y-2">
                             <label className="text-sm text-gray-400">
